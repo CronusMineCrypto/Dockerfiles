@@ -84,3 +84,12 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ghcr.io/cronusminecrypto/dockerfiles:java_17
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Docker image
+        id: build-and-push-discord-bot
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: ./installers/discord-bot/
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/cronusminecrypto/dockerfiles:discord-bot
+          labels: ${{ steps.meta.outputs.labels }}
